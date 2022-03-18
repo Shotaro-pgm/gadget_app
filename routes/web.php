@@ -13,14 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::group(['prefix' => 'user'], function() {
-  Route::get('article/create', 'App\Http\Controllers\User\ArticleController@add');
-  Route::post('article/create', 'App\Http\Controllers\User\ArticleController@create');
-  Route::get('article/edit', 'App\Http\Controllers\User\ArticleController@edit');
-  Route::post('article/edit', 'App\Http\Controllers\User\ArticleController@update');
-  Route::get('profile/create', 'App\Http\Controllers\User\ProfileController@add');
-  Route::post('profile/create', 'App\Http\Controllers\User\ProfileController@create');
-  Route::get('profile/edit', 'App\Http\Controllers\User\ProfileController@edit');
-  Route::post('profile/editgit', 'App\Http\Controllers\User\ProfileController@update');
+  Route::get('article/create', 'App\Http\Controllers\User\ArticleController@add')->middleware('auth');
+  Route::post('article/create', 'App\Http\Controllers\User\ArticleController@create')->middleware('auth');
+  Route::get('article/edit', 'App\Http\Controllers\User\ArticleController@edit')->middleware('auth');
+  Route::post('article/edit', 'App\Http\Controllers\User\ArticleController@update')->middleware('auth');
+  Route::get('article', 'App\Http\Controllers\User\ArticleController@index')->middleware('auth');
+  Route::get('profile/create', 'App\Http\Controllers\User\ProfileController@add')->middleware('auth');
+  Route::post('profile/create', 'App\Http\Controllers\User\ProfileController@create')->middleware('auth');
+  Route::get('profile/edit', 'App\Http\Controllers\User\ProfileController@edit')->middleware('auth');
+  Route::post('profile/editgit', 'App\Http\Controllers\User\ProfileController@update')->middleware('auth');
 });
 
 
