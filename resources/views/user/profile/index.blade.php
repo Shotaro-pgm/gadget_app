@@ -1,17 +1,17 @@
-@extends('layouts.article')
+@extends('layouts.profile')
 @section('title', '記事一覧')
 
 @section('content')
   <div class="container">
     <div class="row">
-      <h2>ニュース一覧</h2>
+      <h2>プロフィール一覧</h2>
     </div>
     <div class="row">
       <div class="col-md-4">
-        <a href="{{ action('App\Http\Controllers\User\ArticleController@add') }}" role="button" class="btn btn-primary">新規作成</a>
+        <a href="{{ action('App\Http\Controllers\User\ProfileController@add') }}" role="button" class="btn btn-primary">新規作成</a>
       </div>
       <div class="col-md-8">
-        <form action="{{ action('App\Http\Controllers\User\ArticleController@index') }}" method="get">
+        <form action="{{ action('App\Http\Controllers\User\ProfileController@index') }}" method="get">
           <div class="form-group row">
             <label class="col-md-2">タイトル</label>
             <div class="col-me-8">
@@ -32,23 +32,23 @@
             <thead>
               <tr>
                 <th width="10%">ID</th>
-                <th width="20%">タイトル</th>
-                <th width="50%">本文</th>
+                <th width="20%">名前</th>
+                <th width="50%">自己紹介</th>
                 <th width="10%">操作</th>
               </tr>
             </thead>
             <tbody>
-              @foreach($posts as $article)
+              @foreach($posts as $profile)
                 <tr>
-                  <th>{{ $article->id }}</th>
-                  <td>{{ Str::limit($article->title, 100) }}</td>
-                  <td>{{ Str::limit($article->body, 250) }}</td>
+                  <th>{{ $profile->id }}</th>
+                  <td>{{ Str::limit($profile->title, 100) }}</td>
+                  <td>{{ Str::limit($profile->body, 250) }}</td>
                   <td>
                     <div>
-                      <a href="{{ action('App\Http\Controllers\User\ArticleController@edit', ['id' => $article->id]) }}">編集</a>
+                      <a href="{{ action('App\Http\Controllers\User\ProfileController@edit', ['id' => $profile->id]) }}">編集</a>
                     </div>
                     <div>
-                      <a href="{{ action('App\Http\Controllers\User\ArticleController@delete', ['id' => $article->id]) }}">削除</a>
+                      <a href="{{ action('App\Http\Controllers\User\ProfileController@delete', ['id' => $profile->id]) }}">削除</a>
                     </div>
                   </td>
                 </tr>
