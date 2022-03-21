@@ -1,9 +1,16 @@
-@extends(layouts.show)
-@section('title', '{{ Str::limit($article->title, 100) }}')
+@extends('layouts.show')
+@section('title', '記事詳細')
 
 @section('content')
   <div class="container">
     <div class="row">
-      <h2>{{ Str::limit($article->title, 100) }}</h2>
+      <div class="col-md-10 mx-auto">
+        <h2>{{ $article->title }}</h2>
+      </div>
+      <div class="col-md-10 mx-auto">
+        <p>
+          {{ $article->body }}
+        </p>
+      </div>
     </div>
   </div>

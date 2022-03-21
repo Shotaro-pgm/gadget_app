@@ -37,11 +37,11 @@ class ArticleController extends Controller
       return redirect('user/article/create');
     }
 
-    public function show($id)
+    public function show(Request $request)
     {
-      $article = Article::find($id);
+      $article = Article::find($request->id);
 
-      return view('user.article/show');
+      return view('user.article.show', compact('article'));
     }
 
     public function edit(Request $request)

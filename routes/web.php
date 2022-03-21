@@ -18,7 +18,7 @@ Route::group(['prefix' => 'user'], function() {
   Route::get('article/edit', 'App\Http\Controllers\User\ArticleController@edit')->middleware('auth');
   Route::post('article/edit', 'App\Http\Controllers\User\ArticleController@update')->middleware('auth');
   Route::get('article/delete', 'App\Http\Controllers\User\ArticleController@delete')->middleware('auth');
-  Route::get('article/show', 'App\Http\Controllers\User\ArticleController@show')->middleware('auth');
+  Route::get('article/show/{id}', 'App\Http\Controllers\User\ArticleController@show')->middleware('auth');
   Route::get('article', 'App\Http\Controllers\User\ArticleController@index')->middleware('auth');
   Route::get('profile/create', 'App\Http\Controllers\User\ProfileController@add')->middleware('auth');
   Route::post('profile/create', 'App\Http\Controllers\User\ProfileController@create')->middleware('auth');
