@@ -1,4 +1,4 @@
-@extends('layouts.article')
+@extends('layouts.app')
 @section('title', '記事の編集')
 
 @section('content')
@@ -38,7 +38,13 @@
               </div>
             </div>
           </div>
-          <input type="submit" class="btn btn-primary" value="編集" />
+          <div class="form-group row">
+            <div class="col-md-10">
+              <input type="hidden" name="id" vlaue="{{ $article_form->id }}" />
+              {{ csrf_field() }}
+              <input type="submit" class="btn btn-primary" value="編集" />
+            </div>
+          </div>
         </form>
       </div>
     </div>

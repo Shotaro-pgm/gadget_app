@@ -1,4 +1,4 @@
-@extends('layouts.article')
+@extends('layouts.app')
 @section('title', '記事一覧')
 
 @section('content')
@@ -44,6 +44,9 @@
                   <td>{{ Str::limit($article->title, 100) }}</td>
                   <td>{{ Str::limit($article->body, 250) }}</td>
                   <td>
+                    <div>
+                      <a href="{{ action('App\Http\Controllers\User\ArticleController@show', ['id' => $article->id]) }}">詳細</a>
+                    </div>
                     <div>
                       <a href="{{ action('App\Http\Controllers\User\ArticleController@edit', ['id' => $article->id]) }}">編集</a>
                     </div>
