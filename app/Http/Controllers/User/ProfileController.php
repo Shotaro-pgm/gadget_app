@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Models\Profile;
+
 class ProfileController extends Controller
 {
     public function add()
@@ -12,18 +14,59 @@ class ProfileController extends Controller
       return view('user.profile.create');
     }
 
-    public function create()
+    public function create(Request $request)
     {
+      $this->validate($request, Profile::$rules);
+
+      $profile = new Profile;
+      $form = $request->all();
+
+      unset($form['_token']);
+
+      $profile->fill($form);
+      $profile->save();
+
       return redirect('user/profile/create');
     }
 
-    public function edit()
+    public function edit(Request $request)
     {
-      return view('user.profile.edit');
+      $profile = Profile::find($request->id);
+      if(empty($profile)) {
+        abort(404);
+      }
+      return view('user.profile.edit', ['profile_form' => $profile]);
     }
 
-    public function update()
+    public function update(Request $request)
     {
+      $this->validate($request, Profile::$rules);
+      $profile = Profile::find($request->id);
+      $profile_form = $request->all();
+
+      unset($profile_form['remove']);
+      unset($profile_form['_token']);
+
+      $profile->fill($profile_form)->save();
+
       return redirect('user/profile/edit');
+    }
+
+    public function index(Request $request)
+    {
+      $cond_title = $request->cond_title;
+      if($cond_title != '') {
+        $posts = Profile::where('title', $cond_title)->get();
+      } else {
+        $posts = Profile::all();
+      }
+      return view('user.profile.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+    }
+
+    public function delete(Request $request)
+    {
+      $profile = Profile::find($request->id);
+      $profile->delete();
+      return redirect('user/profile/');
     }
 }
