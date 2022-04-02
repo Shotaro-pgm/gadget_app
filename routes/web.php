@@ -20,7 +20,6 @@ Route::group(['prefix' => 'user'], function() {
   Route::post('article/edit', 'App\Http\Controllers\User\ArticleController@update')->middleware('auth');
   Route::get('article/delete', 'App\Http\Controllers\User\ArticleController@delete')->middleware('auth');
   Route::get('article', 'App\Http\Controllers\User\ArticleController@index')->middleware('auth');
-  Route::get('article/show/{id}', 'App\Http\Controllers\User\ArticleController@show')->middleware('auth');
 });
 
 Route::get('/', function () {
