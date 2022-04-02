@@ -14,18 +14,22 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group(['prefix' => 'user'], function() {
-  Route::get('article/create', 'App\Http\Controllers\User\ArticleController@add');
-  Route::post('article/create', 'App\Http\Controllers\User\ArticleController@create');
-  Route::get('article/edit', 'App\Http\Controllers\User\ArticleController@edit');
-  Route::post('article/edit', 'App\Http\Controllers\User\ArticleController@update');
-  Route::get('article/delete', 'App\Http\Controllers\User\ArticleController@delete');
-  Route::get('article', 'App\Http\Controllers\User\ArticleController@index');
-  Route::get('article/show/{id}', 'App\Http\Controllers\User\ArticleController@show');
+  Route::get('article/create', 'App\Http\Controllers\User\ArticleController@add')->middleware('auth');
+  Route::post('article/create', 'App\Http\Controllers\User\ArticleController@create')->middleware('auth');
+  Route::get('article/edit', 'App\Http\Controllers\User\ArticleController@edit')->middleware('auth');
+  Route::post('article/edit', 'App\Http\Controllers\User\ArticleController@update')->middleware('auth');
+  Route::get('article/delete', 'App\Http\Controllers\User\ArticleController@delete')->middleware('auth');
+  Route::get('article', 'App\Http\Controllers\User\ArticleController@index')->middleware('auth');
+  Route::get('article/show/{id}', 'App\Http\Controllers\User\ArticleController@show')->middleware('auth');
 });
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
 
