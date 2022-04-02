@@ -46,6 +46,9 @@
                     <div>
                       <a href="{{ action('App\Http\Controllers\User\ArticleController@edit', ['id' => $article->id]) }}">編集</a>
                     </div>
+                    <div>
+                      <a href="{{ action('App\http\Controllers\User\ArticleController@delete', ['id' => $article->id]) }}">削除</a>
+                    </div>
                   </td>
                 </tr>
               @endforeach
