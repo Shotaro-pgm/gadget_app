@@ -2,7 +2,7 @@
 @section('title', '記事の一覧')
 
 @section('content')
-  <deiv class="container">
+  <div class="container">
     <div class="row">
       <h2>記事一覧</h2>
     </div>
@@ -33,7 +33,8 @@
               <tr>
                 <th width="10%">ID</th>
                 <th width="20%">タイトル</th>
-                <th width="50%">本文　</th>
+                <th width="50%">本文</th>
+                <th width="10%">操作</th>
               </tr>
             </thead>
             <tbody>
@@ -47,7 +48,7 @@
                       <a href="{{ action('App\Http\Controllers\User\ArticleController@edit', ['id' => $article->id]) }}">編集</a>
                     </div>
                     <div>
-                      <a href="{{ action('App\http\Controllers\User\ArticleController@delete', ['id' => $article->id]) }}">削除</a>
+                      <a href="{{ action('App\Http\Controllers\User\ArticleController@delete', ['id' => $article->id]) }}">削除</a>
                     </div>
                   </td>
                 </tr>

@@ -20,16 +20,13 @@ Route::group(['prefix' => 'user'], function() {
   Route::post('article/edit', 'App\Http\Controllers\User\ArticleController@update')->middleware('auth');
   Route::get('article/delete', 'App\Http\Controllers\User\ArticleController@delete')->middleware('auth');
   Route::get('article', 'App\Http\Controllers\User\ArticleController@index')->middleware('auth');
+  Route::get('article/index', 'App\Http\Controllers\ArticleController@index');
 });
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

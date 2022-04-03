@@ -14,7 +14,7 @@ class ArticleController extends Controller
       $cond_title = $request->cond_title;
 
       if ($cond_title != '') {
-        $posts = Article::where('title' $cond_title) . orderBy('updated_at', 'desc')->get();
+        $posts = Article::where('title', $cond_title) . orderBy('updated_at', 'desc')->get();
       } else {
         $posts = Article::all()->sortByDesc('update_at');
       }

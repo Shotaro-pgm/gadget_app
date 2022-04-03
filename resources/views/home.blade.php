@@ -1,23 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <a href="http://127.0.0.1:8000/user/article/create"><h2>記事を作成する</h2></a>
+      <a href="http://127.0.0.1:8000/user/article/index"><h2>記事詳細へ</h2></a>
+      <a href="http://127.0.0.1:8000/user/article"><h2>記事一覧へ</h2></a>
     </div>
-</div>
+  </div>
 @endsection

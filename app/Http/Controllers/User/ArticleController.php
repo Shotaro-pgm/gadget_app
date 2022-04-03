@@ -71,7 +71,7 @@ class ArticleController extends Controller
     public function delete(Request $request)
     {
       $article = Article::find($request->id);
-      $aritcle->delete();
+      $article->delete();
       return redirect('user/article');
     }
 
