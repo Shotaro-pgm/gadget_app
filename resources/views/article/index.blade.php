@@ -21,6 +21,15 @@
             </div>
             <div class="col-md-6">
               <p class="body mx-auto">{{ Str::limit($headline->body, 650) }}</p>
+              <div>
+                <a href="{{ action('App\Http\Controllers\User\ArticleController@show', ['id' => $headline->id]) }}">詳細</a>
+              </div>
+              <div>
+                <a href="{{ action('App\Http\Controllers\User\ArticleController@edit', ['id' => $headline->id]) }}">編集</a>
+              </div>
+              <div>
+                <a href="{{ action('App\Http\Controllers\User\ArticleController@delete', ['id' => $headline->id]) }}">削除</a>
+              </div>
             </div>
           </div>
         </div>
@@ -47,6 +56,15 @@
                 @if ($post->image_path)
                   <img src="{{ asset('storage/image/' . $post->image_path) }}" />
                 @endif
+              </div>
+              <div>
+                <a href="{{ action('App\Http\Controllers\User\ArticleController@show', ['id' => $post->id]) }}">詳細</a>
+              </div>
+              <div>
+                <a href="{{ action('App\Http\Controllers\User\ArticleController@edit', ['id' => $post->id]) }}">編集</a>
+              </div>
+              <div>
+                <a href="{{ action('App\Http\Controllers\User\ArticleController@delete', ['id' => $post->id]) }}">削除</a>
               </div>
             </div>
           </div

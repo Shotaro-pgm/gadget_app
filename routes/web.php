@@ -21,6 +21,7 @@ Route::group(['prefix' => 'user'], function() {
   Route::get('article/delete', 'App\Http\Controllers\User\ArticleController@delete')->middleware('auth');
   Route::get('article', 'App\Http\Controllers\User\ArticleController@index')->middleware('auth');
   Route::get('article/index', 'App\Http\Controllers\ArticleController@index');
+  Route::get('article/show/{id}', 'App\Http\Controllers\User\ArticleController@show')->middleware('auth');
 });
 
 Route::get('/', function () {

@@ -34,7 +34,7 @@ class ArticleController extends Controller
       $article->fill($form);
       $article->save();
 
-      return redirect('user/article/create');
+      return redirect('user/article/index');
     }
 
     public function edit(Request $request)
@@ -65,14 +65,14 @@ class ArticleController extends Controller
       unset($article_form['_token']);
 
       $article->fill($article_form)->save();
-      return redirect('user/article');
+      return redirect('user/article/index');
     }
 
     public function delete(Request $request)
     {
       $article = Article::find($request->id);
       $article->delete();
-      return redirect('user/article');
+      return redirect('user/article/index');
     }
 
     public function index(Request $request)
@@ -86,8 +86,9 @@ class ArticleController extends Controller
       return view('user.article.index', ['posts' => $posts, 'cond_title' => $cond_title]);
     }
 
-    public function show()
+    public function show($id)
     {
-
+      $article = Article::findOrFail($id);
+      return view('user.article.show')->with('article',$article);
     }
 }
